@@ -1,0 +1,152 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: 0.16rem;
+}
+
+.nothing {
+  width: 100%;
+  height: 0.16rem;
+  background-color: #f5f5f5;
+}
+
+.goods {
+  width: 100%;
+  position: relative;
+    display: flex;
+    flex-direction: column;
+    .goodss{
+        flex: 1;
+        overflow: auto;
+    }
+  .goods_back {
+    position: fixed;
+    width: 0.5rem;
+    height: 0.5rem;
+    font-size: 0.18rem;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    text-align: center;
+    line-height: 0.5rem;
+    z-index: 3333;
+    top: 0.2rem;
+    left: 0.2rem;
+  }
+
+  .block {
+    width: 100%;
+    height: 5rem;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .el-carousel__indicators--horizontal {
+      li {
+        width: 0.1rem;
+      }
+    }
+  }
+
+  .goods_infos {
+    width: 100%;
+    height: 1.5rem;
+    line-height: 0.5rem;
+    text-indent: 0.1rem;
+
+    .goods_infos_p1 {
+      font-size: 0.25rem;
+      font-weight: bold;
+    }
+
+    .goods_infos_p2 {
+      color: #aaa;
+    }
+
+    .goods_infos_p3 {
+      span {
+        color: #aaa;
+      }
+
+      span:nth-child(1) {
+        color: red;
+
+        span {
+          font-weight: bold;
+          margin-right: 0.3rem;
+        }
+      }
+
+      span:nth-child(3) {
+        margin-left: 2.2rem;
+      }
+    }
+  }
+
+  .toggole {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+    justify-content: space-around;
+    padding: 0.1rem;
+
+    .toggole_p {
+      padding: 0.1rem;
+      width: 49.9%;
+    }
+
+    .redd {
+      width: 49.9%;
+      padding: 0.1rem;
+      border-bottom: 0.02rem red solid;
+    }
+  }
+}
+
+.goods_footer {
+  width: 100%;
+  height: 1rem;
+  background-color: red;
+  position: fixed;
+  bottom: 0rem;
+  z-index: 25;
+  text-align: center;
+  line-height: 1rem;
+  color: white;
+  font-size: 0.25rem;
+}
+.pingjia {
+  width: 100%;
+  ul {
+    li {
+      width: 100%;
+      height: 1.6rem;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        width: 0.6rem;
+        height: 0.6rem;
+      }
+      div {
+        width: 60%;
+        margin-left: 0.6rem;
+        line-height: 0.4rem;
+      }
+    }
+  }
+}
+.contentlist{
+  width: 100% !important;
+  height: 100% !important;
+  img{
+    width: 100% !important;
+    height: 100% !important;
+  }
+}

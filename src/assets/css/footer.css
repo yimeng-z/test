@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.2rem;
+}
+
+.footer {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: white;
+}
+
+.footer ul {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #ddd;
+  padding: 0.2rem;
+  align-items: center;
+  text-align: center;
+}
+
+.footer ul li {
+  width: 25%;
+}
+
+.footer ul li i {
+  font-size: 0.3rem;
+}
+
+.active {
+  color: red;
+}
+
+.active i {
+  color: red;
+}
+
+.active p {
+  color: red;
+}
