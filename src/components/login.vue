@@ -102,7 +102,7 @@ export default {
     margin-left: 2.6rem;
     text-align: center;
     color: white;
-    background: linear-gradient(to right, #fff 0%, #000 100%);
+    background: linear-gradient(to right, #FB5610 0%, #C70000 100%);
   }
 }
 </style>

@@ -167,6 +167,22 @@ export default {
     },
     letsorder() {
       // this.$store.commit("checkdel");
+      // let b = JSON.parse(window.localStorage.getItem("tokens"))
+      // if(a==""){
+      //   Dialog.alert({
+      //     // title: "",
+      //     message: "请先登陆"
+      //   }).then(() => {
+      //     // on close
+      //   });
+      //   this.$router.push({
+      //     path: "/login"
+      //   });
+      // }else{
+      //    this.$router.push({
+      //     path: "/purchase"
+      //   });
+      // }
       let a = this.$store.state.addcar.every(v => {
         return v.check == false;
       });
@@ -174,12 +190,14 @@ export default {
         Dialog.alert({
           // title: "",
           message: "未添加内容"
-        }).then(() => {
-          // on close
-        });
+        })
         return false;
       }
-      if (!this.$store.state.tokens) {
+      if (this.$store.state.tokens=='') {
+           Dialog.alert({
+          // title: "",
+          message: "请先登陆"
+        })
         this.$router.push({
           path: "/login"
         });
@@ -230,6 +248,7 @@ export default {
   line-height: 0.6rem;
   align-items: center;
   position: fixed;
+  justify-content: space-around;
   bottom: 0.95rem;
   z-index: 99;
   background-color: #fff;

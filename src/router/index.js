@@ -26,6 +26,7 @@ Vue.use(Router)
 
 export default new Router({
   mode:"history",
+  base:'/zhangqiqi/',
   linkActiveClass:"active",
   routes: [
     {

@@ -30,7 +30,9 @@
         <p v-if="!kamshow">按当前价购买</p>
         <p>邀请好友砍价</p>
       </div>
-      <div>倒计时</div>
+      <div>
+
+      </div>
     </div>
     <div class="bargain_bottom">
       <p class="friends">{{this.help.length}}名好友帮砍</p>
@@ -65,7 +67,9 @@ export default {
       cutone: {},
       kamshow: true,
       jion: {},
-      help:[]
+      help:[],
+      isEnd:false,
+      endTime:'2020-11-07 00:00:00'
     };
   },
   //监听属性 类似于data概念
@@ -90,7 +94,7 @@ export default {
       _product.kanjiainfo(detailobj).then(res => {
         this.jion = res.data.data;
         this.help=this.jion.helps
-        console.log(this.jion.helps)
+        console.log(this.jion)
       });
     }
   },

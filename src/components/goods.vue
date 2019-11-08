@@ -53,6 +53,7 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import Product from "../services/views-services.js";
 let _product = new Product();
+import { Dialog } from 'vant';
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -79,12 +80,23 @@ export default {
       this.cshow = !this.cshow;
     },
     bargains() {
-      this.$router.push({
+      if (this.$store.state.tokens=='') {
+           Dialog.alert({
+          // title: "",
+          message: "请先登陆"
+        })
+        this.$router.push({
+          path: "/login"
+        });
+      } else {
+          this.$router.push({
         path: "/bargainInfo",
         query: {
           id: this.goodsid,
         }
       });
+      }
+    
     }
   },
   //生命周期 - 创建完成（可以访问当前this实例）

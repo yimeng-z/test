@@ -42,8 +42,19 @@
       placeholder="请输入6位数字用户名"
     />
     <br />
-    <input :class="pictrue?'aa':'bb'" @blur="pictrues" class="login_input" maxlength="6" type="text" v-model="pic" placeholder="图形验证码" name id />
+    <input
+      :class="pictrue?'aa':'bb'"
+      @blur="pictrues"
+      class="login_input"
+      maxlength="6"
+      type="text"
+      v-model="pic"
+      placeholder="图形验证码"
+      name
+      id
+    />
     <br />
+    <img :src="yanzheng" alt />
     <div @click="show=true" class="chose_address">
       <p>选择地区</p>
       <div>
@@ -70,6 +81,7 @@
 //例如：import 《组件名称》 from '《组件路径》';
 import axios from "axios";
 import sanji from "../utils/sanji";
+import { Dialog } from "vant";
 export default {
   //import引入的组件需要注入到对象中才能使用
   components: {},
@@ -89,10 +101,10 @@ export default {
       address: [],
       //验证样式
       phones: true,
-      passes:true,
-      checkp:true,
-      users:true,
-      pictrue:true,
+      passes: true,
+      checkp: true,
+      users: true,
+      pictrue: true
     };
   },
   //监听属性 类似于data概念
@@ -102,40 +114,38 @@ export default {
   //方法集合
   methods: {
     testphone() {
-      if(!(/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phone))) {
+      if (!/^1(3|4|5|6|7|8|9)\d{9}$/.test(this.phone)) {
         this.phones = false;
-        return false
-      }else{
+        return false;
+      } else {
         this.phones = true;
       }
     },
-    testpass(){
-       if(!(/^\d{8,16}$/.test(this.pass))) {
+    testpass() {
+      if (!/^\d{8,16}$/.test(this.pass)) {
         this.passes = false;
-        return false
-      }else{
+        return false;
+      } else {
         this.passes = true;
       }
     },
-    checkpass(){
-      if(this.pass!=this.sure){
-        this.checkp=false
-        return false
-      }else{
-        this.checkp=true
+    checkpass() {
+      if (this.pass != this.sure) {
+        this.checkp = false;
+        return false;
+      } else {
+        this.checkp = true;
       }
     },
-    useres(){
-       if(!(/^\d{6}$/.test(this.user))) {
+    useres() {
+      if (!/^\d{6}$/.test(this.user)) {
         this.users = false;
-        return false
-      }else{
+        return false;
+      } else {
         this.users = true;
       }
     },
-    pictrues(){
-      
-    },
+    pictrues() {},
     getaddress(val) {
       this.address = val;
       console.log(this.address[0].name);
@@ -175,6 +185,22 @@ export default {
         });
     },
     siginnow() {
+      if (
+        this.yanzheng == "" ||
+        this.phone == "" ||
+        this.pass == "" ||
+        this.sure == "" ||
+        this.user == "" ||
+        this.address == ""
+      ) {
+        Dialog.alert({
+          // title: "",
+          message: "请输入完整信息"
+        }).then(() => {
+          // on close
+        });
+        return false;
+      }
       axios
         .post(
           `https://api.it120.cc/small4/verification/sms/check?mobile=${this.phone}&code=${this.trueCode}`
@@ -187,12 +213,18 @@ export default {
                 `https://api.it120.cc/small4/user/m/register?mobile=${this.phone}&pwd=${this.pass}&code=${this.trueCode}&nick=${this.user}&province=${this.address[0].name}&city=${this.address[1].name}`
               )
               .then(res => {
-                // if(res.data.code==0){
-                // this.$router.push({
-                //   path:"/login"
-                // })
-                console.log(res.data);
-                // }
+                if (res.data.code == 0) {
+                  Dialog.alert({
+                    // title: "",
+                    message: "注册成功"
+                  }).then(() => {
+                    // on close
+                  });
+                  this.$router.push({
+                    path: "/login"
+                  });
+                  console.log(res.data);
+                }
               });
           } else {
             axios
@@ -200,7 +232,18 @@ export default {
                 `https://api.it120.cc/small4/user/m/register?mobile=${this.phone}&pwd=${this.pass}&code=${this.trueCode}`
               )
               .then(res => {
-                console.log(res.data.mag);
+                if (res.data.code == 0) {
+                  Dialog.alert({
+                    // title: "",
+                    message: "注册成功"
+                  }).then(() => {
+                    // on close
+                  });
+                  this.$router.push({
+                    path: "/login"
+                  });
+                  console.log(res.data);
+                }
               });
           }
         });
@@ -286,7 +329,7 @@ export default {
   text-align: center;
   margin-top: 0.2rem;
   margin-bottom: 0.2rem;
-  background: linear-gradient(to right, #fff 0%, #000 100%);
+  background: linear-gradient(to right, #fb5610 0%, #c70000 100%);
 }
 .login_input {
   width: 60%;
